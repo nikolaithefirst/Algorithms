@@ -53,5 +53,25 @@ def binary_search(A:list, n:int, x:int):
     return "Not found"
 
 
+def selection_sort(A:list, n:int):
+    """
+    Функция сортировки выбором
+    :param A: массив элементов размера n
+    :param n: размер массива
+    :return: отсортированный по возрастанию массив A
+    """
+    for i in range(n-1):
+        smallest = i
+        for j in range(i+1, n):
+            if A[j] < A[smallest]:
+                # smallest = i
+                temp = A[i]
+                A[i] = A[j]
+                A[j] = temp
+    return A
+
+
 if __name__ == "__main__":
     print(binary_search.__doc__)
+    a = np.random.randint(1, 100, 100)
+    print(selection_sort(a, len(a)))
