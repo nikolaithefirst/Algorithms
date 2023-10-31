@@ -64,11 +64,29 @@ def selection_sort(A:list, n:int):
         smallest = i
         for j in range(i+1, n):
             if A[j] < A[smallest]:
-                smallest = j
-        temp = A[i]
-        A[i] = A[smallest]
-        A[smallest] = temp
+                # smallest = i
+                temp = A[i]
+                A[i] = A[j]
+                A[j] = temp
     return A
+
+
+def selection_sort_2(A: list, n: int):
+        """
+        Функция сортировки выбором
+        :param A: массив элементов размера n
+        :param n: размер массива
+        :return: отсортированный по возрастанию массив A
+        """
+        for i in range(n - 1):
+            smallest = i
+            for j in range(i + 1, n):
+                if A[j] < A[smallest]:
+                    smallest = j
+                    temp = A[i]
+                    A[i] = A[smallest]
+                    A[smallest] = temp
+        return A
 
 
 def selection_sort_2(A:list, n:int):
