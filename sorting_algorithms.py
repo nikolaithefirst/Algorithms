@@ -83,9 +83,9 @@ def selection_sort_2(A: list, n: int):
             for j in range(i + 1, n):
                 if A[j] < A[smallest]:
                     smallest = j
-                    temp = A[i]
-                    A[i] = A[smallest]
-                    A[smallest] = temp
+            temp = A[i]
+            A[i] = A[smallest]
+            A[smallest] = temp
         return A
 
 
