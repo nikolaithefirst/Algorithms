@@ -89,7 +89,7 @@ def selection_sort_2(A: list, n: int):
         return A
 
 
-def inserion_sort(A, n):
+def inserion_sort(A:list, n:int):
     """
     Функция сортировки вставкой
     :param A: массив элементов размера n
@@ -105,6 +105,37 @@ def inserion_sort(A, n):
         A[j+1] = key
     return A
 
+
+def merge_sort(A, p, r):
+    """
+    Функция сортировки слиянием
+    :param A: массив элементов размера n
+    :param p: начальный индекс массива
+    :param r: конечный индекс массива
+    :return: отсортированный в неубывающем порядке массив A
+    """
+    if p >= r:
+        return A
+    else:
+        q = (p + r) // 2
+        merge_sort(A, p. q)
+        merge_sort(A, q, r)
+        merge(A, p, q, r)
+
+
+def merge(A:list, p:int, q:int, r:int):
+    """
+    Функция слияния
+    :param A: массив данных
+    :param p: минимальный индекс
+    :param q: средний индекс
+    :param r: максимальный индекс
+    :return: отсортированный массив в пределах p и r
+    """
+    n = q - p + 1
+    m = r - q
+    # A[]
+    pass
 
 
 if __name__ == "__main__":
