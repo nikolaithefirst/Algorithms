@@ -109,18 +109,18 @@ def inserion_sort(A:list, n:int):
 def merge_sort(A, p, r):
     """
     Функция сортировки слиянием
-    :param A: массив элементов размера n
+    :param A: массив элементов размера nA = {ndarray: (10,)} [77 43 13 25 12 15 90 49 26 88]...View as Array
     :param p: начальный индекс массива
     :param r: конечный индекс массива
     :return: отсортированный в неубывающем порядке массив A
     """
-    if p >= r:
+    if p >= r - 1:
         return A
     else:
         q = (p + r) // 2
-        merge_sort(A, p. q)
+        merge_sort(A, p, q)
         merge_sort(A, q, r)
-        merge(A, p, q, r)
+        return merge(A, p, q, r)
 
 
 def merge(A:list, p:int, q:int, r:int):
@@ -134,27 +134,43 @@ def merge(A:list, p:int, q:int, r:int):
     """
     n = q - p + 1
     m = r - q
-    # A[]
-    pass
+    B = A[p:q].copy()
+    C = A[q:r].copy()
+    B = np.append(B, 1000000)
+    C = np.append(C, 1000000)
+    i, j = 0, 0
+    for k in range(p, r):
+        if B[i] <= C[j]:
+            A[k] = B[i]
+            i += 1
+        else:
+            A[k] = C[j]
+            j += 1
+    return A
 
 
 if __name__ == "__main__":
-    print(binary_search.__doc__)
-    a = np.random.randint(1, 1000, 1000)
+    # print(binary_search.__doc__)
+    # c = np.arange(0, 100000)
+    # start = time.time()
+    # find = sentinel_linear_search(c, len(c), 999)
+    # print(time.time() - start)
+    # start = time.time()
+    # find = binary_search(c, len(c), 999)
+    # print(time.time() - start)
+    a = np.random.randint(1, 1000000, 10000)
     start = time.time()
     selection_sort(a, len(a))
-    print(time.time() - start)
-    b = np.random.randint(1, 1000, 1000)
+    print("Сортировка выбором: ", time.time() - start)
+    b = np.random.randint(1, 1000000, 10000)
     start = time.time()
     selection_sort_2(b, len(b))
-    print(time.time() - start)
-    c = np.arange(0, 100000)
+    print("Сортировка выбором: ", time.time() - start)
     start = time.time()
-    find = sentinel_linear_search(c, len(c), 999)
-    print(time.time() - start, find)
+    d = np.random.randint(1, 1000000, 10000)
+    inserion_sort(d, len(d))
+    print("Сортировка вставкой: ", time.time() - start)
     start = time.time()
-    find = binary_search(c, len(c), 999)
-    print(time.time() - start, find)
-    d = np.random.randint(1, 100, 100)
-    print(d)
-    print(inserion_sort(d, len(d)))
+    e = np.random.randint(1, 1000000, 1000)
+    # print(merge_sort(e, 0, len(e)))
+    print("Сортировка слиянием: ", time.time() - start)
